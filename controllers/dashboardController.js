@@ -1,4 +1,5 @@
 const dashboardModel = require('../models/dashboardModel')
+const interactionModel = require('../models/interactionModel')
 
 
 exports.getDashboard = (req, res) => {
@@ -20,3 +21,10 @@ exports.getDashboard = (req, res) => {
 
 
 }
+
+exports.getAllInteractions = (req, res) => {
+    interactionModel.getAllInteractions((err, rows) => {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json(rows);
+        });
+    };
